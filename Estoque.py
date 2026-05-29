@@ -1,6 +1,21 @@
-estoque = []
+nomeProd = []
+quantProd = []
+idProd = []
+locProd = []
 
 def adicao(): 
     print("--------------------------- ADICIONAR PRODUTOS------------------------------")
     novoEstoque = input("Qual produto será adicionado? ")
-    estoque.append(novoEstoque)
+    nomeProd.append(novoEstoque)
+
+
+
+i = int(input("Qual a quantidade de produtos seram adicionados? "))
+if(i <= 1):
+    for k in range(1,i+1):
+        adicao()
+    
+else:
+    print("Digite novamente a quantidade de produtos")
+
+print(nomeProd, quantProd, idProd,locProd )
