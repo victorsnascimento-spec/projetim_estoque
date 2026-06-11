@@ -2,7 +2,7 @@ nomeProd = []
 quantProd = []
 idProd = []
 locProd = []
-
+estoque = nomeProd, quantProd, idProd, locProd
 def adicao(): 
     print("--------------------------- ADICIONAR PRODUTOS------------------------------")
     novoEstoque = input("Qual produto será adicionado? ")
@@ -18,4 +18,6 @@ if(i <= 1):
 else:
     print("Digite novamente a quantidade de produtos")
 
-print(nomeProd, quantProd, idProd,locProd )
+print(estoque)
+
+#lista.pop() = remove o ultimo item
