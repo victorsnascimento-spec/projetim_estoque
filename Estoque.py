@@ -1,6 +1,9 @@
+import os
 estoque = []
 pesquisa = 0
 
+def limpar():
+    os.system("cls")
 
 def travarMenu():
     input("Pressione <ENTER> para continuar...")
@@ -39,9 +42,10 @@ def arrumandoID():
     print("Seu ID foi corrigido!")
 
 while True:
+    limpar()
     try:
         print("\n--------------------------- ESTOQUE DA LOJA ---------------------------")
-        print("\n1- Mostrar status gerais do estoque | 2- Adicionar produto | 3- Mostrar informações isoladas | 4- Procurar produto por ID | 5- Mudar a quantidade dos produtos ou Excluir produto | 6 - Arrumar sequência de ID | 7- Sair\n")
+        print("\n|1- Mostrar status gerais do estoque |\n| 2- Adicionar produto |\n| 3- Mostrar informações isoladas |\n| 4- Procurar produto por ID |\n| 5- Mudar a quantidade dos produtos ou Excluir produto |\n| 6 - Arrumar sequência de ID |\n| 7- Sair|\n")
         opcao = input("Escolha a opção que deseja fazer:" )
 
         if (opcao == "1"):
@@ -58,7 +62,7 @@ while True:
                     print("----------")
             for items2 in estoque:
                 if items2[1] < 5:
-                    print(f"A quantidade do item {items2} está menor que 5")
+                    print(f"A quantidade do item {items2[0]} está menor que 5")
             
             travarMenu()
 
@@ -66,7 +70,8 @@ while True:
             adicao()
 
         elif(opcao == "3"):
-            print(" 1- Nome do produtos | 2- Quantidade dos produtos| 3- ID dos produtos | 4- Local do produto")
+            limpar()
+            print(" |1- Nome do produtos |\n| 2- Quantidade dos produtos |\n| 3- ID dos produtos |\n| 4- Local do produto |")
             opcaoIso = input("Escolha a opção que dejesa utilizar:")
             if (opcaoIso == "1"):
                 if (len(estoque))== 0:
