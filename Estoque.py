@@ -9,35 +9,39 @@ def adicao():
     global iD
     global estoque
 
-    quantAdicao()
-
-    print("--------------------------- ADICIONAR PRODUTOS ------------------------------")
-    novoEstoque = input("Qual produto será adicionado? ") #Adiciona o nome do produto
-   
-
-    print("--------------------------- ADICIONAR QUANTIDADE ------------------------------")
-    novaquat = int(input("Quantos ítens são desejados?")) #Adiciona a quantidade do produto
-
-
-    print("--------------------------- ADICIONAR ID ------------------------------")
-    novoID = int(input("Adicione seu ID:"))#Adicionar ID
-
-    print("--------------------------- LOCAL ------------------------------")
-    novoLoc = input("Qual local o produto estara?") #Adiciona o local que o produto estara
-
-    estoque.append([novoEstoque, novaquat, novoID, novoLoc])
-
-    travarMenu()
-
-def quantAdicao():
     i = 0
     while i < 1:
             i = int(input("Qual a quantidade de produtos seram adicionados? "))
-       
+    while i > 0:
+
+        print("--------------------------- ADICIONAR PRODUTOS ------------------------------")
+        novoEstoque = input("Qual produto será adicionado? ") #Adiciona o nome do produto
+    
+
+        print("--------------------------- ADICIONAR QUANTIDADE ------------------------------")
+        novaquat = int(input("Quantos ítens são desejados?")) #Adiciona a quantidade do produto
+
+
+        print("--------------------------- ADICIONAR ID ------------------------------")
+        novoID = int(input("Adicione seu ID:"))#Adicionar ID
+
+        print("--------------------------- LOCAL ------------------------------")
+        novoLoc = input("Qual local o produto estara?") #Adiciona o local que o produto estara
+
+        estoque.append([novoEstoque, novaquat, novoID, novoLoc])
+
+        travarMenu()
+        i -= 1
+def arrumandoID():
+    iDnovo = 0
+    for estoquE in estoque:
+        estoquE[2] = iDnovo
+        iDnovo += 1
+    print("Seu ID foi corrigido!")
 
 while True:
     print("\n--------------------------- ESTOQUE DA LOJA ---------------------------")
-    print("\n1- Mostrar status gerais do estoque | 2- Adicionar produto | 3- Mostrar informações isoladas | 4- Procurar produto por ID | 5- Mudar a quantidade dos produtos ou Excluir produto | 6- Sair\n")
+    print("\n1- Mostrar status gerais do estoque | 2- Adicionar produto | 3- Mostrar informações isoladas | 4- Procurar produto por ID | 5- Mudar a quantidade dos produtos ou Excluir produto | 6 - Arrumar sequência de ID | 7- Sair\n")
     opcao = input("Escolha a opção que dejasa fazer:" )
 
     if (opcao == "1"):
@@ -48,8 +52,15 @@ while True:
                 if i == "s":
                     adicao()
         else:
-            print(estoque)
-            travarMenu()
+            for itens in estoque:
+                print("----------")
+                print(f"Nome: {itens[0]}\nQuantidade: {itens[1]}\nID {itens[2]}\nLocal: {itens[3]}")
+                print("----------")
+        for items2 in estoque:
+            if items2[1] < 5:
+                print(f"A quantidade do item {items2} está menor que 5")
+        
+        travarMenu()
 
     elif (opcao == "2"):
         adicao()
@@ -144,8 +155,18 @@ while True:
                         travarMenu()
                     elif escolha == "3":
                         break
+    
+    elif (opcao == "6"):
+        if (estoque)== 0:
+                print("ERRO ⚠️⚠️⚠️")
+                print("Não há produtos !!!")
+                i = input("Dejesa adicionar um produtos? (s/n)")
+                if i == "s":
+                    adicao()
+        else:
+            arrumandoID()
             
-    elif(opcao == "8"):
+    elif(opcao == "7"):
         print("Obrigado pela preferencia")
         print("Volte sempre !")
         break
